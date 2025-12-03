@@ -1,0 +1,16 @@
+.topbar {
+  height: 64px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.topbar .left { display:flex; align-items:center; gap:12px; }
+.menu-toggle { font-size:18px; background:transparent; border:none; cursor:pointer; }
+.user { background:#eee; padding:8px 12px; border-radius:6px; }

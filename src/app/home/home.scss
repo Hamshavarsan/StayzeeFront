@@ -1,0 +1,9 @@
+.page { padding: 20px; }
+.cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom:18px; }
+.card {
+  background: #fff; padding: 18px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  min-width: 180px; flex: 1 1 180px;
+}
+.card h4 { margin: 0 0 8px 0; color: #333; }
+.card p { font-size: 22px; font-weight:700; margin:0; }
+.welcome { background: #fff; padding: 18px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }

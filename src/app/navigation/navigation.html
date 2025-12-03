@@ -1,0 +1,41 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="logo-section">
+    <div class="logo">
+      <span *ngIf="!isCollapsed">Admin Panel</span>
+      <span *ngIf="isCollapsed">AP</span>
+    </div>
+    
+    <div class="profile-pic" routerLink="/profile" (click)="closeIfMobile()">
+      <img src="https://via.placeholder.com/50" alt="Profile" />
+    </div>
+  </div>
+
+  <ul class="menu">
+    <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeIfMobile()">
+      <i class="icon">🏠</i>
+      <span *ngIf="!isCollapsed">Home</span>
+    </li>
+
+    <li routerLink="/customer" routerLinkActive="active" (click)="closeIfMobile()">
+      <i class="icon">👥</i>
+      <span *ngIf="!isCollapsed">Customer</span>
+    </li>
+
+    <li routerLink="/owners" routerLinkActive="active" (click)="closeIfMobile()">
+      <i class="icon">📅</i>
+      <span *ngIf="!isCollapsed">Owners</span>
+    </li>
+
+    <li routerLink="/settings" routerLinkActive="active" (click)="closeIfMobile()">
+      <i class="icon">⚙️</i>
+      <span *ngIf="!isCollapsed">Settings</span>
+    </li>
+  </ul>
+
+  <div class="bottom">
+    <button class="collapse-btn" (click)="toggleSidebar()">
+      <span *ngIf="isCollapsed">➡</span>
+      <span *ngIf="!isCollapsed">⬅</span>
+    </button>
+  </div>
+</div>
