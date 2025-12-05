@@ -1,0 +1,89 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">StayZee</div>
+    <nav class="navigation">
+      <ul>
+        <li><a href="#">Favourite</a></li>
+        <li><a href="#">Rental</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="hero-section">
+    <div class="container">
+      <h1>Get a smooth stay in Sri Lanka...</h1>
+      <div class="search-filters">
+        <input type="text" placeholder="City" class="filter-input">
+        <input type="number" placeholder="Min Bedrooms" class="filter-input">
+        <input type="number" placeholder="Max Price" class="filter-input">
+        <select class="filter-input">
+          <option value="">Property Type</option>
+          <option value="villa">Villa</option>
+          <option value="homestay">Homestay</option>
+          <option value="apartment">Apartment</option>
+          <option value="boarding">Boarding Place</option>
+        </select>
+        <select class="filter-input">
+          <option value="">Long or Short Term</option>
+          <option value="long">Long Term</option>
+          <option value="short">Short Term</option>
+        </select>
+        <button class="search-button">Search</button>
+      </div>
+      <div class="additional-filters">
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Furnished
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Wi-Fi
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Pet Friendly
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Parking
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="property-grid-section">
+    <div class="container">
+      <div class="property-grid">
+        <div class="property-card" *ngFor="let property of properties">
+          <div class="property-image" [style.backgroundImage]="'url(' + property.image + ')'"></div>
+          <div class="card-content">
+            <h3>{{ property.title }}</h3>
+            <div class="property-meta">
+              <span class="location">{{ property.city }}</span>
+              <span class="bedrooms">{{ property.bedrooms }} Bedrooms</span>
+              <span class="type">{{ property.type }}</span>
+            </div>
+            <p class="description">{{ property.description }}</p>
+            <div class="card-footer">
+              <span class="price">${{ property.price }}/month</span>
+              <div class="card-actions">
+                <button class="btn-favorite" (click)="toggleFavorite(property)">
+                  <i class="material-icons">{{ property.isFavorite ? 'favorite' : 'favorite_border' }}</i>
+                </button>
+                <button class="btn-book">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
