@@ -8,11 +8,13 @@ import { Home } from './home/home';
 import { Topbar } from './topbar/topbar';
 import { Customer } from "./customer/customer";
 import { Owner } from "./owner/owner";
+import { Footer } from './components/footer/footer';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, Customer, Owner],
+  standalone:true,
+  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, Customer, Owner,Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

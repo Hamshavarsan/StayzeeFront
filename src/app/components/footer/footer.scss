@@ -1,0 +1,34 @@
+.site-footer{
+    background:purple;
+    color:#ffffff;
+    padding:40px 0;
+  }
+  
+  .footer-container{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+  }
+  
+  .footer-column a{
+    display:block;
+    color:#ccc;
+    padding:5px 0;
+    text-decoration:none;
+  }
+  
+  .footer-column h4{
+    margin-bottom:10px;
+  }
+  .desc { 
+    
+    margin-bottom: 20px; color: #cfd8dc; }
+  
+  .copyright{
+    text-align:center;
+    padding-top:20px;
+    font-size:14px;
+  }
+  

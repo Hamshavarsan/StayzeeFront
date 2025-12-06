@@ -19,3 +19,22 @@ html, body {
     margin: 0;
     padding: 0%;
   }
+  html, body, app-root{
+    height:100%;
+  }
+  
+  app-root{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  
+  router-outlet{
+    flex:1;
+  }
+  .dashboard-wrapper{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+  }
+    
