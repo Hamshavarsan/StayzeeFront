@@ -7,6 +7,7 @@ import { PropertyCardComponent } from '../features/customer/components/property-
 import { NavbarComponent } from '../features/customer/shared/navbar/navbar';
 import { Favorites } from '../features/customer/favorites/favorites.component';
 import { Profile } from '../features/customer/profile/profile';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
  export interface Property {
   id: number;
@@ -23,11 +24,13 @@ import { Profile } from '../features/customer/profile/profile';
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,  // Add this for standalone component
-  imports: [CommonModule],  // Import CommonModule for common directives
+  imports: [CommonModule,NavbarComponent,RouterLink,RouterLinkActive],  // Import CommonModule for common directives
   templateUrl: './customer-dashboard.component.html',
   styleUrls: ['./customer-dashboard.component.scss']
 })
 export class CustomerDashboardComponent implements OnInit {
+  showProfileMenu: boolean = false;
+
   properties: Property[] = [
   {
     id: 1,
@@ -112,6 +115,19 @@ export class CustomerDashboardComponent implements OnInit {
 
   searchProperties(): void {
     console.log('Searching properties...');
+  }
+  toggleProfileMenu(): void {
+    this.showProfileMenu = !this.showProfileMenu;
+  }
+
+  closeMenu(): void {
+    this.showProfileMenu = false;
+  }
+
+  onLogout(event: Event): void {
+    event.preventDefault();
+    // Add your logout logic here
+    console.log('Logging out...');
   }
 
   // New method to handle customer data loading

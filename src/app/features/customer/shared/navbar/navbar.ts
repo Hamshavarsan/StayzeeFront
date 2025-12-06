@@ -15,7 +15,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <div class="nav-links">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
         <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
-        <a href="#contact" routerLinkActive="active">Contact Us</a>
+        <a href="/setting" routerLinkActive="active">Setting</a>
+        <a href="#about" routerLinkActive="active">About Us</a>
+
       </div>
       <div class="profile-section">
         <div class="profile-icon" (click)="toggleProfileMenu()">

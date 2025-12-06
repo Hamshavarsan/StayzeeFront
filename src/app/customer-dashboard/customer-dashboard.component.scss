@@ -49,34 +49,45 @@ body {
     align-items: center;
   }
 
-  .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: $accent;
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
 
-  .navigation {
-    ul {
-      display: flex;
-      list-style: none;
-      
-      li {
-        margin-left: 25px;
-        
-        a {
-          text-decoration: none;
-          color: $text;
-          font-weight: 500;
-          transition: color 0.3s ease;
-          
-          &:hover {
-            color: $accent;
-          }
-        }
-      }
-    }
+  .logo .logo-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F8A1D1;
+    text-decoration: none;
   }
-}
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #F8A1D1;
+  }
+  }
+
 
 // Hero section
 .hero-section {
@@ -84,7 +95,7 @@ body {
   text-align: center;
   
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     margin-bottom: 30px;
     color: darken($text, 10%);
   }
@@ -359,4 +370,24 @@ body {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+.profile-section {
+  position: relative;
+}
+
+.profile-icon {
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-icon:hover {
+  background-color: #f5f5f5;
+}
+
+.profile-icon svg {
+  width: 25px;
+  height: 26px;
+  color: #333;
 }
