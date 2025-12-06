@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../customer.service'; // Fixed import path
+import { CommonModule } from '@angular/common';
+import { CustomerService } from '../customer.service';
 import { PropertyService } from '../services/property.service';
+import { SearchResultsComponent } from '../features/customer/search-results/search-results';
+import { PropertyCardComponent } from '../features/customer/components/property-card/property-card';
+import { NavbarComponent } from '../features/customer/shared/navbar/navbar';
+import { Favorites } from '../features/customer/favorites/favorites.component';
+import { Profile } from '../features/customer/profile/profile';
 
-interface Property {
+ export interface Property {
   id: number;
   title: string;
   city: string;
@@ -16,6 +22,8 @@ interface Property {
 
 @Component({
   selector: 'app-customer-dashboard',
+  standalone: true,  // Add this for standalone component
+  imports: [CommonModule],  // Import CommonModule for common directives
   templateUrl: './customer-dashboard.component.html',
   styleUrls: ['./customer-dashboard.component.scss']
 })
