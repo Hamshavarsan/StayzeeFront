@@ -3,11 +3,22 @@
     color:#ffffff;
     padding:40px 0;
   }
+  .footer a{
+    text-align: center;
+    text-decoration: none;
+    display:block;
+    color:#ccc;
+  }
+  .footer h4{
+    text-align: center;
+    margin-bottom: 10px;
+
+  }
   
   .footer-container{
     display:grid;
     grid-template-columns: repeat(4,1fr);
-    gap:40px;
+    gap:0px;
     max-width:1200px;
     margin:auto;
   }
@@ -31,4 +42,7 @@
     padding-top:20px;
     font-size:14px;
   }
+  
+
+    
   

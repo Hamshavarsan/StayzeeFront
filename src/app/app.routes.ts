@@ -7,6 +7,10 @@ import { Property, PropertyCardComponent } from './features/customer/components/
 import { SearchResultsComponent } from './features/customer/search-results/search-results';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { NavbarComponent } from './features/customer/shared/navbar/navbar';
+import { About } from './features/about/about';
+
+
+
 export const routes: Routes = [
     { path: '', component: CustomerDashboardComponent },   // 👈 MAIN PAGE
     { path: 'home', component: CustomerDashboardComponent },
@@ -17,6 +21,7 @@ export const routes: Routes = [
     {path:'property',component:PropertyCardComponent},
     {path:'searchresult',component:SearchResultsComponent},
     {path:'navbar',component:NavbarComponent},
+    {path:'about',component:About}
 
 
 ];

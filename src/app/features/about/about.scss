@@ -1,0 +1,58 @@
+/* Layout */
+.about-page {
+    padding: 48px 16px;
+    background: #f7f7f8; /* light bg for readability */
+    color: #1f2933;
+    min-height: 60vh;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Heading */
+  h1 {
+    color: lightcoral; /* matches footer dark */
+    margin-bottom: 16px;
+    font-size: 28px;
+  }
+  
+  /* Paragraph */
+  .about-text p {
+    line-height: 1.7;
+    margin-bottom: 14px;
+    color: #24303a;
+    font-size: 16px;
+  }
+  .about-text h4{color: #2f3438; /* matches footer dark */
+    margin-bottom: 16px;
+    font-size: 28px;
+
+  }
+  
+  /* Extra cards */
+  .extra {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(45,52,58,0.06);
+    border: 1px solid rgba(47,52,56,0.05);
+  }
+  
+  .card h3 { color: #2f3438; margin-bottom:8px; }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .extra { grid-template-columns: 1fr; }
+    h1 { font-size: 22px; }
+  }
+  
