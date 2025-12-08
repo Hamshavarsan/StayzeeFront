@@ -1,0 +1,23 @@
+<div class="card">
+  <h2>Create Booking</h2>
+
+  <label>Customer ID</label>
+  <input [(ngModel)]="booking.customerId" placeholder="customer id" />
+
+  <label>Home ID</label>
+  <input [(ngModel)]="booking.homeId" placeholder="home id" readonly />
+
+  <label>Check-in</label>
+  <input type="date" [(ngModel)]="booking.checkInDate" />
+
+  <label>Check-out</label>
+  <input type="date" [(ngModel)]="booking.checkOutDate" />
+
+  <label>Total Price</label>
+  <input type="number" [(ngModel)]="booking.totalPrice" />
+
+  <button (click)="submit()" [disabled]="loading">Create</button>
+
+  <p class="success" *ngIf="success">{{success}}</p>
+  <p class="error" *ngIf="error">{{error}}</p>
+</div>

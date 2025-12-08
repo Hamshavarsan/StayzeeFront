@@ -93,7 +93,8 @@
                 <button class="btn-favorite" (click)="toggleFavorite(property)">
                   <i class="material-icons">{{ property.isFavorite ? 'favorite' : 'favorite_border' }}</i>
                 </button>
-                <button class="btn-book">BOOK NOW</button>
+                <button class="btn-book" (click)="bookNow(property)">BOOK NOW</button>
+
               </div>
             </div>
           </div>

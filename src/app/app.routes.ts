@@ -16,6 +16,10 @@ import { SettingsComponent } from './admin/settings/settings.component';
 import { AdminOwnerComponent } from './admin/owner/owner.component';
 import { AdminComponent } from './admin/admin.component';
 import { Home } from './home/home';
+import { CreateBookingComponent } from './features/booking/create-booking/create-booking.component';
+import { BookingListComponent } from './features/booking/booking-list/booking-list.component';
+import { BookingDetailsComponent } from './features/booking/booking-details/booking-details.component';
+import { ShareBookingComponent } from './features/booking/share-booking/share-booking.component';
 //import { profile } from 'console';
 
 
@@ -38,7 +42,15 @@ export const routes: Routes = [
     {path:'searchresult',component:SearchResultsComponent},
     {path:'navbar',component:NavbarComponent},
     {path:'about',component:About},
-    { path: 'create-rental', component: CreateRental }
+    { path: 'create-rental', component: CreateRental },
+    { path: '', redirectTo: 'booking/list', pathMatch: 'full' },
+  { path: 'booking/create', component: CreateBookingComponent },
+  { path: 'booking/list', component: BookingListComponent },
+  { path: 'booking/:id', component: BookingDetailsComponent },
+  { path: 'booking/:id/share', component: ShareBookingComponent },
+  { path: '**', redirectTo: 'booking/list' },
+  { path: 'booking/create/:propertyId', component: CreateBookingComponent }
+
 
 
 
