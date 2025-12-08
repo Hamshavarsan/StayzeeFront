@@ -9,7 +9,7 @@ import { SearchResultsComponent } from './features/customer/search-results/searc
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { NavbarComponent } from './features/customer/shared/navbar/navbar';
 import { About } from './features/about/about';
-
+import { CreateRental } from './create-rental/create-rental';
 
 
 export const routes: Routes = [
@@ -24,7 +24,8 @@ export const routes: Routes = [
     {path:'property',component:PropertyCardComponent},
     {path:'searchresult',component:SearchResultsComponent},
     {path:'navbar',component:NavbarComponent},
-    {path:'about',component:About}
+    {path:'about',component:About},
+    { path: 'create-rental', component: CreateRental }
 
 
 ];

@@ -7,6 +7,9 @@
     
     <button type="submit">Login</button>
   </form>
+  <div class="text-danger mb-3" *ngIf="errorMessage">
+  {{ errorMessage }}
+  </div>
   <p>Don't have an account? <a routerLink="/register">Register here</a></p>
   <p> <a routerLink="/register">Forgot Password</a></p>
 </div>
