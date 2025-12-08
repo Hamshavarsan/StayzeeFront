@@ -6,13 +6,15 @@ import { Login } from "./login/login";
 import { Navigation } from "./navigation/navigation";
 import { Home } from './home/home';
 import { Topbar } from './topbar/topbar';
-import { Customer } from "./customer/customer";
-import { Owner } from "./owner/owner";
+import { AdminCustomerComponent } from './admin/customer/customer.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminOwnerComponent } from './admin/owner/owner.component';
+import { SettingsComponent } from './admin/settings/settings.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, Customer, Owner],
+  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, AdminCustomerComponent, AdminOwnerComponent, AdminComponent, SettingsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

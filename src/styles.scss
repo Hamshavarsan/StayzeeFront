@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+/* No ~ needed */
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
+/* Global Dark Theme Variables */
+body.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --card-bg: #2d2d2d;
+    --border-color: #444;
+    --sidebar-bg: #222;
+    --sidebar-text: #ddd;
+    --sidebar-hover: #333;
+    --table-stripe-bg: #333;
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Apply variables to common elements when dark mode is active */
+body.dark-theme {
+    .sidebar {
+        background-color: var(--sidebar-bg);
+        color: var(--sidebar-text);
+
+        .menu li {
+
+            &:hover,
+            &.active {
+                background-color: var(--sidebar-hover);
+            }
+
+            a {
+                color: var(--sidebar-text);
+            }
+        }
+    }
+
+    .table {
+        color: var(--text-color);
+
+        th,
+        td {
+            border-color: var(--border-color);
+            background-color: transparent;
+            /* Ensure table cells don't have white bg */
+            color: var(--text-color);
+        }
+
+        /* Bootstrap table overrides if needed */
+        &.table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--table-stripe-bg);
+        }
+    }
+
+    .card,
+    .admin-container section {
+        background-color: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-color);
+    }
+
+    /* Ensure inputs and selects are dark */
+    input,
+    select,
+    textarea {
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
+}

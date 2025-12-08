@@ -1,0 +1,51 @@
+<div class="settings-container">
+    <h2>{{ 'SETTINGS' | translate }}</h2>
+
+    <div class="setting-item">
+        <div class="setting-info">
+            <h3>{{ 'DARK_MODE' | translate }}</h3>
+            <p>{{ 'SWITCH_THEME' | translate }}</p>
+        </div>
+        <div class="toggle-switch" (click)="toggleTheme()" [class.active]="isDarkMode">
+            <div class="slider"></div>
+        </div>
+    </div>
+
+    <div class="setting-item">
+        <div class="setting-info">
+            <h3>{{ 'LANGUAGE' | translate }}</h3>
+            <p>{{ 'SELECT_LANG' | translate }}</p>
+        </div>
+        <div class="language-selector">
+            <button *ngFor="let lang of languages" [class.active]="currentLanguage === lang.code"
+                (click)="changeLanguage(lang.code)">
+                {{ lang.name }}
+            </button>
+        </div>
+    </div>
+
+    <div class="setting-item">
+        <div class="setting-info">
+            <h3>{{ 'VOLUME' | translate }}</h3>
+            <p>{{ 'ADJUST_VOLUME' | translate }}</p>
+        </div>
+        <div class="volume-control">
+            <input type="range" min="0" max="1" step="0.1" [value]="currentVolume" (input)="onVolumeChange($event)"
+                class="volume-slider">
+            <span class="volume-value">{{ (currentVolume * 100).toFixed(0) }}%</span>
+        </div>
+    </div>
+
+    <!-- Location Setting with Map -->
+    <div class="setting-item map-setting">
+        <div class="setting-info">
+            <h3>{{ 'LOCATION_SETTING' | translate }}</h3>
+            <p>{{ 'CHANGE_LOCATION' | translate }}</p>
+        </div>
+        <div class="map-container">
+            <iframe *ngIf="mapUrl" [src]="mapUrl" width="100%" height="300" frameborder="0"
+                style="border:0; border-radius: 8px;" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</div>

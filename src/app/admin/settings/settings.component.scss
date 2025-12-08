@@ -1,0 +1,172 @@
+.settings-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color, #333);
+
+    h2 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        background: var(--card-bg, #fff);
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .setting-info {
+            h3 {
+                margin: 0 0 0.5rem 0;
+                font-size: 1.1rem;
+            }
+
+            p {
+                margin: 0;
+                color: var(--text-muted, #666);
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .toggle-switch {
+        width: 50px;
+        height: 28px;
+        background: #e0e0e0;
+        border-radius: 25px;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        .slider {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        &.active {
+            background: #4CAF50;
+
+            .slider {
+                transform: translateX(22px);
+            }
+        }
+    }
+
+    .language-selector {
+        display: flex;
+        gap: 0.5rem;
+
+        button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-color, #333);
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.05);
+            }
+
+            &.active {
+                background: #007bff;
+                color: white;
+                border-color: #007bff;
+            }
+        }
+    }
+
+    // Volume Control Styles
+    .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 150px;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            outline: none;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 18px;
+                height: 18px;
+                background: #007bff;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 2px solid white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            &::-moz-range-thumb {
+                width: 18px;
+                height: 18px;
+                background: #007bff;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 2px solid white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .volume-value {
+            font-weight: 500;
+            min-width: 40px;
+            text-align: right;
+            color: var(--text-color, #333);
+        }
+    }
+}
+
+// Dark theme support within the component
+:host-context(.dark-theme) {
+    .settings-container {
+        --text-color: #f0f0f0;
+        --text-muted: #aaa;
+        --card-bg: #2d2d2d;
+
+        .language-selector button {
+            border-color: #444;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            &.active {
+                background: #007bff;
+            }
+        }
+
+        .volume-control {
+            .volume-slider {
+                background: #444;
+            }
+
+            .volume-value {
+                color: #f0f0f0;
+            }
+        }
+    }
+}

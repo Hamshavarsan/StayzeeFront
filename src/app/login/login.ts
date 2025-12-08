@@ -8,22 +8,25 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule ,HttpClientModule ],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
-loginModel = {
+  loginModel = {
     username: '',
     password: ''
   };
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   onSubmit() {
     this.authService.login(this.loginModel).subscribe({
       next: (res) => {
         console.log('Login success:', res);
+        if (res && res.token) {
+          localStorage.setItem('token', res.token);
+        }
       },
       error: (err) => {
         console.error('Login error:', err);

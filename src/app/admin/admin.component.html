@@ -1,0 +1,70 @@
+<div class="admin-container">
+
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+    <section>
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <h2>{{ 'USERS_MANAGEMENT' | translate }}</h2>
+            <app-tts-button [text]="'TTS_USERS' | translate"></app-tts-button>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'ID' | translate }}</th>
+                    <th>{{ 'NAME' | translate }}</th>
+                    <th>{{ 'EMAIL' | translate }}</th>
+                    <th>{{ 'STATUS' | translate }}</th>
+                    <th>{{ 'ACTIONS' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.userId }}</td>
+                    <td>{{ user.firstName }} {{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.isActive ? ('ACTIVE' | translate) : ('BLOCKED' | translate) }}</td>
+                    <td>
+                        <button *ngIf="user.isActive" (click)="blockUser(user.userId)" class="btn btn-danger">{{ 'BLOCK'
+                            | translate }}</button>
+                        <button *ngIf="!user.isActive" (click)="unblockUser(user.userId)" class="btn btn-success">{{
+                            'UNBLOCK' | translate }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <h2>{{ 'PENDING_HOMES' | translate }}</h2>
+            <app-tts-button [text]="'TTS_HOMES' | translate"></app-tts-button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'ID' | translate }}</th>
+                    <th>{{ 'NAME' | translate }}</th>
+                    <th>{{ 'LOCATION' | translate }}</th>
+                    <th>{{ 'PRICE' | translate }}</th>
+                    <th>{{ 'ACTIONS' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let home of pendingHomes">
+                    <td>{{ home.propertyId }}</td>
+                    <td>{{ home.name }}</td>
+                    <td>{{ home.location }}</td>
+                    <td>{{ home.pricePerNight | currency }}</td>
+                    <td>
+                        <button (click)="approveHome(home.propertyId)" class="btn btn-success">{{ 'APPROVE' | translate
+                            }}</button>
+                        <button (click)="rejectHome(home.propertyId)" class="btn btn-danger">{{ 'REJECT' | translate
+                            }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

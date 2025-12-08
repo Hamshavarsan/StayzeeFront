@@ -1,0 +1,25 @@
+<section>
+    <div class="d-flex align-items-center gap-2 mb-3">
+        <h2>{{ 'RENTALS' | translate }}</h2>
+        <app-tts-button [text]="'TTS_RENTALS' | translate"></app-tts-button>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'ID' | translate }}</th>
+                <th>{{ 'LOCATION' | translate }}</th>
+                <th>{{ 'PRICE' | translate }}</th>
+                <th>{{ 'ACCOUNT_NUMBER' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rental of rentals">
+                <td>{{ rental.id }}</td>
+                <td>{{ rental.homeLocation }}</td>
+                <td>{{ rental.oneDayPrice | currency }}</td>
+                <td>{{ rental.accountNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

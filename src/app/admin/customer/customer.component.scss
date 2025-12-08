@@ -1,0 +1,28 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th,
+    td {
+        border: 1px solid var(--border-color, #ddd);
+        padding: 8px;
+        text-align: left;
+        color: var(--text-color, inherit);
+    }
+
+    th {
+        background-color: var(--card-bg, #f2f2f2);
+    }
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+
+    &.alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+}

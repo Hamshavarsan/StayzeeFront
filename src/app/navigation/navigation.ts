@@ -3,16 +3,17 @@ import { Router } from '@angular/router';
 import { HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 
 @Component({
   selector: 'app-navigation',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, TranslatePipe],
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss',
 })
 export class Navigation {
-isCollapsed = false;
+  isCollapsed = false;
   mobile = false;
 
   constructor(private router: Router) {

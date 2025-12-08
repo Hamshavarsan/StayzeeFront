@@ -1,9 +1,144 @@
-.page { padding: 20px; }
-.cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom:18px; }
-.card {
-  background: #fff; padding: 18px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  min-width: 180px; flex: 1 1 180px;
+.page {
+  padding: 20px;
 }
-.card h4 { margin: 0 0 8px 0; color: #333; }
-.card p { font-size: 22px; font-weight:700; margin:0; }
-.welcome { background: #fff; padding: 18px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+.branding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .brand-left {
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      i {
+        font-size: 40px;
+        color: #cc2e6d; // Green color like the House.lk reference or StayZee brand
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+        letter-spacing: -0.5px;
+      }
+    }
+  }
+
+  .brand-right {
+    display: flex;
+    flex-direction: column; // Stack vertically like the reference image usually implies for details, or row if preferred. 
+    // Actually typically these are in a row or column. The user verified image showed them in a column on the right. 
+    // Let's stick to a cleaned up row or column. Let's try column to match standard header info blocks if they are detailed, 
+    // OR row if it's a bar. The user prompt listed them: phone, email, location.
+    // Let's make them flex-start in a column for the right side to be clear.
+    gap: 12px;
+    align-items: flex-start;
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+      font-size: 15px;
+
+      i {
+        width: 20px;
+        text-align: center;
+        color: #2ecc71; // Icon color
+        font-size: 16px;
+      }
+
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+
+.card h4 {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.card p {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.welcome {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+// Dark Mode Overrides
+:host-context(body.dark-theme) {
+  .branding-header {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+
+    .brand-left .brand-logo h1 {
+      color: var(--text-color);
+    }
+
+    .brand-right .contact-item {
+      color: var(--text-color);
+    }
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+
+    h4 {
+      color: var(--text-color);
+    }
+
+    p {
+      color: var(--text-color);
+    }
+  }
+
+  .welcome {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+
+    h2,
+    p {
+      color: var(--text-color);
+    }
+  }
+}
