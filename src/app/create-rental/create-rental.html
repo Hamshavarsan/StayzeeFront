@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>List Your Home for Rent</h2>
+
+  <form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Account Number (from current bill)</label>
+      <input type="text" formControlName="accountNumber" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Home Location</label>
+      <input type="text" formControlName="homeLocation" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>One Day Price (₹)</label>
+      <input type="number" formControlName="oneDayPrice" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Current Bill Amount (₹)</label>
+      <input type="number" formControlName="currentBill" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Upload Photos (Minimum 4)</label>
+      <input 
+        type="file" 
+        multiple 
+        accept="image/*"
+        (change)="onFileChange($event)"
+        required>
+      <small>Selected: {{ selectedPhotos.length }} photos</small>
+      <div class="text-danger" *ngIf="selectedPhotos.length > 0 && selectedPhotos.length < 4">
+        Minimum 4 photos required!
+      </div>
+    </div>
+
+    <button 
+      type="submit"
+      [disabled]="rentalForm.invalid || selectedPhotos.length < 4 || isSubmitting"
+      style="padding: 16px; background: #6366f1; color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; width: 100%; position: relative;">
+      <span *ngIf="!isSubmitting">Submit & List My Home</span>
+      <span *ngIf="isSubmitting">
+        Listing Your Home... Please wait
+      </span>
+    </button>
+
+  </form>
+
+  <div style="margin-top: 20px; padding: 15px; border-radius: 10px; background: #d4edda; color: #155724;" 
+       *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div style="margin-top: 20px; padding: 15px; border-radius: 10px; background: #f8d7da; color: #721c24;" 
+       *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>

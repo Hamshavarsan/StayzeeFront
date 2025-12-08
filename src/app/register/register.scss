@@ -1,17 +1,16 @@
-.login-container {
-  width: 380px;
-  margin: 60px auto;
+.register-container {
+  width: 400px;
+  margin: 40px auto;
+  background: #fff;
   padding: 30px 35px;
-  background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 
   h2 {
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 26px;
-    font-weight: 600;
+    margin-bottom: 20px;
     color: #333;
+    font-weight: 600;
   }
 
   form {
@@ -20,28 +19,28 @@
     gap: 15px;
   }
 
-  input {
+  input, select {
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
     font-size: 15px;
-    transition: 0.25s ease;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.2s ease-in-out;
 
     &:focus {
       border-color: #4a90e2;
-      box-shadow: 0 0 6px rgba(74, 144, 226, 0.3);
+      box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
       outline: none;
     }
   }
 
   button {
     padding: 12px;
-    background: #4a90e2;
-    color: white;
     border: none;
-    border-radius: 10px;
+    background: #4a90e2;
+    color: #fff;
     font-size: 16px;
     font-weight: 600;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.25s;
 
@@ -54,8 +53,7 @@
       transform: scale(0.97);
     }
   }
-
-  p {
+   p {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;

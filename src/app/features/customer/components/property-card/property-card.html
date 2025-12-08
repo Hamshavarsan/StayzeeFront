@@ -1,0 +1,51 @@
+<div class="property-card">
+    <div class="property-image">
+      <img [src]="property.imageUrl" [alt]="property.title">
+  
+      <button class="favorite-button"
+              (click)="toggleFavorite()"
+              [class.favorited]="property.isFavorite">
+  
+        ❤️
+      </button>
+    </div>
+  
+    <div class="property-details">
+      <div class="property-header">
+        <h3 class="property-title">
+          <a [routerLink]="['/property', property.id]">
+            {{ property.title }}
+          </a>
+        </h3>
+  
+        <div class="property-price">
+          {{ property.price }} <span>/month</span>
+        </div>
+      </div>
+  
+      <p class="property-location">
+        📍 {{ property.location }}
+      </p>
+  
+      <p class="property-description">
+        {{ property.description }}
+      </p>
+  
+      <div class="property-features">
+        <span>{{ property.bedrooms }} Beds</span>
+        <span>{{ property.bathrooms }} Baths</span>
+      </div>
+  
+      <div class="property-amenities">
+        <span *ngIf="property.amenities.wifi">Wi-Fi</span>
+        <span *ngIf="property.amenities.parking">Parking</span>
+        <span *ngIf="property.amenities.airConditioning">AC</span>
+        <span *ngIf="property.amenities.pool">Pool</span>
+      </div>
+  
+      <button class="book-button" (click)="onBookNow()">
+        Book Now
+      </button>
+    </div>
+  </div>
+  

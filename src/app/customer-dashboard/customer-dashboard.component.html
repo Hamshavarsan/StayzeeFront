@@ -1,0 +1,104 @@
+<header class="header">
+  <div class="container">
+    <!--<div class="logo">🏠  StayZee.com</div>!-->
+    <nav class="navbar">
+      <div class="logo">
+        <a routerLink="/" class="logo-link">🏠StayZee.com</a>
+      </div>
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a routerLink="/favorites" routerLinkActive="active">❤️Favorites</a>
+        <a href="/setting" routerLinkActive="active">⚙️Setting</a>
+        <a href="/about" routerLinkActive="active">👥About Us</a>
+
+      </div>
+      <div class="profile-section">
+        <div class="profile-icon" (click)="toggleProfileMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+            <a routerLink="/profile" (click)="closeMenu()">Profile</a>
+        </div>
+      </div>
+    
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="hero-section">
+    <div class="container">
+      <h1>Get a smooth stay in Sri Lanka...👉</h1>
+      <div class="search-filters">
+        <input type="text" placeholder="City" class="filter-input">
+        <input type="number" placeholder="Min Bedrooms" class="filter-input">
+        <input type="number" placeholder="Max Price" class="filter-input">
+        <select class="filter-input">
+          <option value="">Property Type</option>
+          <option value="villa">Villa</option>
+          <option value="homestay">Homestay</option>
+          <option value="apartment">Apartment</option>
+          <option value="boarding">Boarding Place</option>
+        </select>
+        <select class="filter-input">
+          <option value="">Long or Short Term</option>
+          <option value="long">Long Term</option>
+          <option value="short">Short Term</option>
+        </select>
+        <button class="search-button">Search</button>
+      </div>
+      <div class="additional-filters">
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Furnished
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Wi-Fi
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Pet Friendly
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+          Parking
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="property-grid-section">
+    <div class="container">
+      <div class="property-grid">
+        <div class="property-card" *ngFor="let property of properties">
+          <div class="property-image" [style.backgroundImage]="'url(' + property.image + ')'"></div>
+          <div class="card-content">
+            <h3>{{ property.title }}</h3>
+            <div class="property-meta">
+              <span class="location">{{ property.city }}</span>
+              <span class="bedrooms">{{ property.bedrooms }} Bedrooms</span>
+              <span class="type">{{ property.type }}</span>
+            </div>
+            <p class="description">{{ property.description }}</p>
+            <div class="card-footer">
+              <span class="price">{{ property.price }}/month</span>
+              <div class="card-actions">
+                <button class="btn-favorite" (click)="toggleFavorite(property)">
+                  <i class="material-icons">{{ property.isFavorite ? 'favorite' : 'favorite_border' }}</i>
+                </button>
+                <button class="btn-book">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

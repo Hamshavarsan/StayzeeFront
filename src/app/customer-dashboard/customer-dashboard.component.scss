@@ -1,0 +1,393 @@
+// Color palette
+$primary-bg: #F5DCE7;
+$accent: #D97FA3;
+$button: #FF80B4;
+$text: #333333;
+$card-bg: #FFFFFF;
+$border: lighten($primary-bg, 5%);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: $primary-bg;
+  color: $text;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Header styles
+.header {
+  background-color: $card-bg;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .logo .logo-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F8A1D1;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #F8A1D1;
+  }
+  }
+
+
+// Hero section
+.hero-section {
+  padding: 40px 0;
+  text-align: center;
+  
+  h1 {
+    font-size: 2.0rem;
+    margin-bottom: 30px;
+    color: darken($text, 10%);
+  }
+  
+  .search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+    
+    .filter-input, select {
+      padding: 10px 15px;
+      border: 1px solid $border;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      
+      &:focus {
+        border-color: $accent;
+      }
+    }
+    
+    .search-button {
+      background-color: $button;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: darken($button, 10%);
+      }
+    }
+  }
+  
+  .additional-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 14px;
+      user-select: none;
+      
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        
+        &:checked ~ .checkmark {
+          background-color: $accent;
+          border-color: $accent;
+          
+          &:after {
+            display: block;
+          }
+        }
+      }
+      
+      .checkmark {
+        position: relative;
+        height: 18px;
+        width: 18px;
+        background-color: white;
+        border: 1px solid $border;
+        border-radius: 3px;
+        margin-right: 8px;
+        
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 6px;
+          top: 2px;
+          width: 4px;
+          height: 8px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+// Property grid
+.property-grid-section {
+  padding: 20px 0 60px;
+  
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .property-card {
+    background: $card-bg;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .property-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .card-content {
+      padding: 20px;
+      
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        color: darken($text, 15%);
+      }
+      
+      .property-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: lighten($text, 20%);
+        margin-bottom: 15px;
+        
+        span {
+          display: flex;
+          align-items: center;
+          
+          &::before {
+            content: '•';
+            margin: 0 5px;
+          }
+          
+          &:first-child::before {
+            display: none;
+          }
+        }
+      }
+      
+      .description {
+        font-size: 0.9rem;
+        color: lighten($text, 10%);
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid $border;
+        
+        .price {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $accent;
+        }
+        
+        .card-actions {
+          display: flex;
+          gap: 10px;
+          
+          .btn-favorite {
+            background: none;
+            border: none;
+            color: $text;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            @include flex-center;
+            transition: all 0.3s ease;
+            
+            &:hover, &.active {
+              color: $accent;
+              background-color: rgba($accent, 0.1);
+            }
+            
+            i {
+              font-size: 20px;
+            }
+          }
+          
+          .btn-book {
+            background-color: $button;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            
+            &:hover {
+              background-color: darken($button, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .header {
+    .navigation {
+      ul {
+        li {
+          margin-left: 15px;
+          
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  
+  .hero-section {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .search-filters {
+      .filter-input, select, .search-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Material Icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.profile-section {
+  position: relative;
+}
+
+.profile-icon {
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-icon:hover {
+  background-color: #f5f5f5;
+}
+
+.profile-icon svg {
+  width: 25px;
+  height: 26px;
+  color: #333;
+}
