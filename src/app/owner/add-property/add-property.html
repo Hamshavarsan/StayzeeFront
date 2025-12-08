@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h2>Add Your Property</h2>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <input type="text" placeholder="Account Number"
+           [(ngModel)]="rentalData.accountNumber"
+           name="accountNumber" required>
+
+    <input type="text" placeholder="Home Title"
+           [(ngModel)]="rentalData.homeTitle"
+           name="homeTitle" required>
+
+    <input type="text" placeholder="Location"
+           [(ngModel)]="rentalData.homeLocation"
+           name="homeLocation" required>
+
+    <input type="number" placeholder="Bedrooms"
+           [(ngModel)]="rentalData.bedrooms"
+           name="bedrooms" required>
+
+    <select [(ngModel)]="rentalData.petFriendly" name="pet" required>
+      <option [value]="true">Pet Friendly</option>
+      <option [value]="false">Not Pet Friendly</option>
+    </select>
+
+    <input type="number" placeholder="One Day Price"
+           [(ngModel)]="rentalData.oneDayPrice"
+           name="oneDayPrice" required>
+
+    <input type="number" placeholder="Monthly Price"
+           [(ngModel)]="rentalData.monthPrice"
+           name="monthPrice" required>
+
+    <input type="file" multiple (change)="onFileSelect($event)" required>
+
+    <button type="submit">Create Property</button>
+
+  </form>
+
+</div>
+

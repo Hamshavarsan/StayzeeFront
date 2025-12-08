@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-create-rental',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,RouterOutlet],
   templateUrl: './create-rental.html',
   styleUrls: ['./create-rental.scss']
 })
