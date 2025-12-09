@@ -12,40 +12,54 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
-export class Login {
+export class Login  {  // class name-யும் மாத்திட்டேன் (best practice)
 
-  loginData: any = {
+  loginData = {
     Username: '',
     Password: ''
   };
 
-  errorMessage: string = '';
+  errorMessage = '';
+  isLoading = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
+    if (!this.loginData.Username || !this.loginData.Password) {
+      this.errorMessage = 'Please fill both fields';
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
     this.authService.login(this.loginData).subscribe({
       next: (res: any) => {
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("role", res.role);
+        // இதுதான் மிக முக்கியம் – userId ஐ கண்டிப்பா save பண்ணு!
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userId', res.userId.toString());  // இதை miss பண்ணாதே!
+        localStorage.setItem('role', res.role);
+        localStorage.setItem('username', res.username || res.Username);
 
-        if (res.role === "Customer") {
+        // Role-based routing
+        if (res.role === 'Customer') {
           this.router.navigate(['/home']);
-        }
-        else if (res.role === "Admin") {
+        } else if (res.role === 'Admin') {
           this.router.navigate(['/admin-dashboard']);
-        }
-        else if (res.role === "Rentals") {
-          this.router.navigate(['/rentals-dashboard']);
+        } else if (res.role === 'Rentals') {
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/']); // default home
         }
       },
       error: (err: any) => {
-        // API message eduthukkura place
-        const msg = err.error?.message || "Login failed!";
-        alert(msg);
+        const msg = err.error?.message || 'Login failed! Check username/password';
         this.errorMessage = msg;
+        alert(msg);
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     });
   }
-
 }

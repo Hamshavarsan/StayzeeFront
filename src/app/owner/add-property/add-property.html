@@ -1,43 +1,124 @@
-<div class="container">
+<div class="add-property-container">
+  <div class="card">
+  <div class="card-header">
+    <button type="button" class="back-btn" (click)="goBack()">
+      ← Back
+    </button>
+    <h2 class="title">Add Retal Home</h2>
+  </div>
+  <p class="subtitle">Fill the details & upload at least 4 photos</p>
 
-  <h2>Add Your Property</h2>
+    <form (ngSubmit)="onSubmit()" #rentalForm="ngForm" class="property-form">
 
-  <form (ngSubmit)="onSubmit()">
+      <!-- Home Title -->
+      <div class="input-group">
+        <label>Home Title</label>
+        <input type="text"
+               placeholder="Ex: Cozy 2BHK in Anna Nagar"
+               [(ngModel)]="rentalData.homeTitle"
+               name="homeTitle"
+               required />
+      </div>
 
-    <input type="text" placeholder="Account Number"
-           [(ngModel)]="rentalData.accountNumber"
-           name="accountNumber" required>
+      <!-- Location -->
+      <div class="input-group">
+        <label>Location</label>
+        <input type="text"
+               placeholder="Ex: Anna Nagar, Chennai"
+               [(ngModel)]="rentalData.homeLocation"
+               name="homeLocation"
+               required />
+      </div>
 
-    <input type="text" placeholder="Home Title"
-           [(ngModel)]="rentalData.homeTitle"
-           name="homeTitle" required>
+      <!-- Bedrooms -->
+      <div class="input-group">
+        <label>Bedrooms</label>
+        <input type="number" min="1" max="10"
+               [(ngModel)]="rentalData.bedrooms"
+               name="bedrooms"
+               required />
+      </div>
 
-    <input type="text" placeholder="Location"
-           [(ngModel)]="rentalData.homeLocation"
-           name="homeLocation" required>
+      <!-- Pet Friendly -->
+      <div class="input-group">
+        <label>Pet Friendly?</label>
+        <select [(ngModel)]="rentalData.petFriendly" name="petFriendly" required>
+          <option [value]="true">Yes, Pets Allowed</option>
+          <option [value]="false">No Pets</option>
+        </select>
+      </div>
 
-    <input type="number" placeholder="Bedrooms"
-           [(ngModel)]="rentalData.bedrooms"
-           name="bedrooms" required>
+      <!-- Prices -->
+      <div class="price-row">
+        <div class="input-group">
+          <label>Price per Day (₹)</label>
+          <input type="number" min="1"
+                 [(ngModel)]="rentalData.oneDayPrice"
+                 name="oneDayPrice" required />
+        </div>
 
-    <select [(ngModel)]="rentalData.petFriendly" name="pet" required>
-      <option [value]="true">Pet Friendly</option>
-      <option [value]="false">Not Pet Friendly</option>
-    </select>
+        <div class="input-group">
+          <label>Monthly Price (₹)</label>
+          <input type="number" min="1"
+                 [(ngModel)]="rentalData.monthPrice"
+                 name="monthPrice" required />
+        </div>
+      </div>
 
-    <input type="number" placeholder="One Day Price"
-           [(ngModel)]="rentalData.oneDayPrice"
-           name="oneDayPrice" required>
+      <!-- Current Bill -->
+      <div class="input-group">
+        <label>Current Electricity Bill (₹)</label>
+        <input type="number" min="0"
+               [(ngModel)]="rentalData.currentBill"
+               name="currentBill" required />
+      </div>
 
-    <input type="number" placeholder="Monthly Price"
-           [(ngModel)]="rentalData.monthPrice"
-           name="monthPrice" required>
+      <!-- Photo Upload -->
+      <div class="upload-section">
+        <label>Property Photos <span class="required-star">*</span></label>
+        <p class="help-text">Upload minimum 4 photos (max 10)</p>
 
-    <input type="file" multiple (change)="onFileSelect($event)" required>
+        <div class="drop-zone" 
+             (drop)="onDrop($event)" 
+             (dragover)="allowDrop($event)"
+             [class.drag-over]="isDragOver">
+          <input type="file" 
+                 multiple 
+                 accept="image/*" 
+                 (change)="onFileSelect($event)" 
+                 class="file-input" />
+          <p>Drag & drop photos here or click to browse</p>
+        </div>
 
-    <button type="submit">Create Property</button>
+        <!-- Preview -->
+        <div class="photo-preview" *ngIf="photos.length > 0">
+          <div class="preview-header">
+            <span>{{ photos.length }} photo(s) selected</span>
+            <span class="warning" *ngIf="photos.length < 4">
+              Need at least 4 photos
+            </span>
+          </div>
 
-  </form>
+          <div class="preview-grid">
+            <div class="photo-item" *ngFor="let photo of photos; let i = index">
+              <img [src]="photo | safeUrl" alt="preview" />
+              <button type="button" class="remove-btn" (click)="removePhoto(i)">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Submit Button -->
+      <button type="submit" 
+              class="submit-btn"
+              [disabled]="isSubmitting || photos.length < 4">
+        <span *ngIf="!isSubmitting">Create Property</span>
+        <span *ngIf="isSubmitting">Creating...</span>
+      </button>
+
+    </form>
+  </div>
 </div>
 

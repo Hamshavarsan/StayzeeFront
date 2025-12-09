@@ -24,22 +24,22 @@ export class Register {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onRegister() {
+ onRegister() {
+  this.authService.register(this.registerData).subscribe({
+    next: (res: any) => {
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('userId', res.userId.toString());   // இங்கயும் வரும்!
+      localStorage.setItem('role', res.role);
+      localStorage.setItem('username', res.username);
 
-    this.authService.register(this.registerData).subscribe(res => {
-
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("role", res.role);
-
-      if (res.role === "Customer") {
+       
+      if (res.role === 'Customer') {
         this.router.navigate(['/home']);
-      } 
-      // else if (res.role === "Admin") {
-      //   this.router.navigate(['/admin-dashboard']);
-      // }
-      // else if (res.role === "Rentals") {
-      //   this.router.navigate(['/rentals-dashboard']);
-      // }
-    });
-  }
+      }
+    },
+    error: (err) => {
+      alert(err.error.message || 'Registration failed');
+    }
+  });
+}
 }

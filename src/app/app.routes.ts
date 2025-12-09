@@ -29,7 +29,7 @@ import { AddProperty } from './owner/add-property/add-property';
 export const routes: Routes = [
     { path: '', component: Login}, 
     { path: 'login', component: Login },
-    { path: 'home', component: Home },
+    //{ path: 'home', component: Home },
     { path: 'register', component: Register },  
     { path: 'home', component: CustomerDashboardComponent },
     { path: 'admin', component: AdminComponent },

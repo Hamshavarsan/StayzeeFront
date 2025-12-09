@@ -5,7 +5,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { TtsService } from '../../services/tts.service';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { Router } from '@angular/router';                 
 @Component({
     selector: 'app-settings',
     standalone: true,
@@ -14,6 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+
     isDarkMode = false;
     currentLanguage = 'en';
     currentVolume = 1;
@@ -25,11 +26,13 @@ export class SettingsComponent implements OnInit {
         { code: 'si', name: 'Sinhala' }
     ];
 
+    // இங்கே Router inject பண்ணணும்!!!
     constructor(
         private settingsService: SettingsService,
         private ttsService: TtsService,
         @Inject(PLATFORM_ID) private platformId: Object,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private router: Router                             
     ) { }
 
     ngOnInit() {
@@ -47,12 +50,18 @@ export class SettingsComponent implements OnInit {
 
         this.settingsService.location$.subscribe(loc => {
             if (isPlatformBrowser(this.platformId)) {
-                // Using Google Maps Embed API
-                // Note: Replace YOUR_API_KEY with your actual API key
                 const url = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${loc.lat},${loc.lng}`;
                 this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
             }
         });
+    }
+
+    goBack() {
+    this.router.navigate(['/add-property']); 
+  
+}
+    goToAddHomePage() {
+        this.router.navigate(['/add-property']);
     }
 
     toggleTheme() {
@@ -68,5 +77,3 @@ export class SettingsComponent implements OnInit {
         this.ttsService.setVolume(volume);
     }
 }
-
-
