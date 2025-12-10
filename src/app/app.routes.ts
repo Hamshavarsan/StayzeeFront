@@ -21,13 +21,12 @@ import { BookingListComponent } from './features/booking/booking-list/booking-li
 import { BookingDetailsComponent } from './features/booking/booking-details/booking-details.component';
 import { ShareBookingComponent } from './features/booking/share-booking/share-booking.component';
 import { AddProperty } from './owner/add-property/add-property';
-
 //import { profile } from 'console';
 
 
 
 export const routes: Routes = [
-    { path: '', component: Login}, 
+    { path: '', component: CustomerDashboardComponent}, 
     { path: 'login', component: Login },
     //{ path: 'home', component: Home },
     { path: 'register', component: Register },  
@@ -52,8 +51,8 @@ export const routes: Routes = [
     { path: 'booking/:id/share', component: ShareBookingComponent },
     //{ path: '**', redirectTo: 'booking/list' },
     { path: 'booking/create/:propertyId', component: CreateBookingComponent },
-    { path: 'add-property', component: AddProperty}
-
+    { path: 'add-property', component: AddProperty},
+   
 
 
 

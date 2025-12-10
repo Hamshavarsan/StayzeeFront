@@ -1,13 +1,13 @@
 <header class="header">
   <div class="container">
-    <!--<div class="logo">🏠  StayZee.com</div>!-->
-    <nav class="navbar">
+    <div class="logo">🏠  StayZee.com</div>
+     <nav class="navbar">
       <div class="logo">
         <a routerLink="/" class="logo-link">🏠StayZee.com</a>
       </div>
       <div class="nav-links">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a routerLink="/favorites" routerLinkActive="active">❤️Favorites</a>
+        <a routerLink="/favorite" routerLinkActive="active">❤️Favorites</a>
         <a href="/admin/settings" routerLinkActive="active">⚙️Setting</a>
         <a href="/about" routerLinkActive="active">👥About Us</a>
 
@@ -21,9 +21,9 @@
           </svg>
             <a routerLink="/profile" (click)="closeMenu()">Profile</a>
         </div>
-      </div>
+      </div> 
     
-    </nav>
+    </nav> 
   </div>
 </header>
 

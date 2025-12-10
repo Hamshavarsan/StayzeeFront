@@ -14,7 +14,11 @@ import { Router } from '@angular/router';
     styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
+goBack() {
+    this.router.navigate(['home']); 
+        
+}
+    
     isDarkMode = false;
     currentLanguage = 'en';
     currentVolume = 1;
@@ -34,6 +38,7 @@ export class SettingsComponent implements OnInit {
         private sanitizer: DomSanitizer,
         private router: Router                             
     ) { }
+    
 
     ngOnInit() {
         this.settingsService.darkMode$.subscribe(isDark => {
@@ -56,10 +61,7 @@ export class SettingsComponent implements OnInit {
         });
     }
 
-    goBack() {
-    this.router.navigate(['/add-property']); 
-  
-}
+   
     goToAddHomePage() {
         this.router.navigate(['/add-property']);
     }
