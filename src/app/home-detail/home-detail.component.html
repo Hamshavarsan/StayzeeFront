@@ -1,0 +1,26 @@
+<!-- src/app/home-detail/home-detail.component.html -->
+<div class="property-detail-container" *ngIf="home">
+  <div class="property-header">
+    <h1>{{ home.homeTitle }}</h1>
+    <p class="location">{{ home.homeLocation }}</p>
+  </div>
+
+  <div class="property-info">
+    <p><strong>Bedrooms:</strong> {{ home.bedrooms }}</p>
+    <p><strong>Pet Friendly:</strong> {{ home.petFriendly ? 'Yes' : 'No' }}</p>
+    <p class="price">₹{{ home.oneDayPrice }} <span>/ night</span></p>
+  </div>
+
+  <!-- BOOK NOW Button -->
+  <button 
+    class="book-now-btn" 
+    [routerLink]="['/booking', home.id]">
+    BOOK NOW
+  </button>
+
+  <button class="back-btn" (click)="goBack()">Back to Home</button>
+</div>
+
+<div *ngIf="!home" class="loading">
+  Loading property details...
+</div>

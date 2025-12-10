@@ -1,0 +1,46 @@
+<div class="booking-page">
+  <h1>Complete Your Booking</h1>
+
+  <div class="home-card" *ngIf="home">
+    <h2>{{ home.homeTitle }}</h2>
+    <p>{{ home.homeLocation }}</p>
+    <p>₹{{ home.oneDayPrice }} per night</p>
+    <img *ngFor="let img of home.images" [src]="img.url" class="home-image" />
+  </div>
+
+  <div class="form">
+    <label>Check-in Date</label>
+    <input type="date" [(ngModel)]="booking.CheckInDate" (change)="calculateDays()" />
+
+    <label>Check-out Date</label>
+    <input type="date" [(ngModel)]="booking.CheckOutDate" (change)="calculateDays()" />
+
+    <div class="summary">
+      <p>Nights: <strong>{{ days }}</strong></p>
+      <p>Total Price: <strong>₹{{ booking.TotalPrice }}</strong></p>
+    </div>
+
+    <button *ngIf="!bookingConfirmed" class="confirm-btn" (click)="confirmBooking()" [disabled]="days <= 0">
+      CONFIRM BOOKING
+    </button>
+    <button *ngIf="bookingConfirmed" class="confirm-btn" (click)="proceedToPayment()">
+      PAYMENT
+    </button>
+  </div>
+
+  <div *ngIf="bookingId" class="share-box">
+    <h3>Share this booking with registered customers (Max 10 people)</h3>
+    <input type="text" [(ngModel)]="shareEmails" placeholder="friend@gmail.com, family@yahoo.com" />
+    <button (click)="shareBooking()">SHARE</button>
+    <p style="color:green">{{ shareMessage }}</p>
+
+    <div *ngIf="sharedCustomers.length > 0">
+      <h4>Added Customers:</h4>
+      <ul>
+        <li *ngFor="let email of sharedCustomers">{{ email }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="back" (click)="goBack()">Back to Home</button>
+</div>
