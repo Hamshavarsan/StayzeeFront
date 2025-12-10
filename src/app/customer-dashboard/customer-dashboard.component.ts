@@ -28,11 +28,16 @@ export class CustomerDashboardComponent implements OnInit {
   showProfileMenu: boolean = false;
 
   properties: Property[] = [];
-  searchFilters={
+
+
+  
+  searchFilters = {
     city: '',
     minBedrooms: null,
-    type: ''
-  }
+    maxPrice: null,
+    type: '',
+    duration: ''
+  };
 
   constructor(
     private customerService: CustomerService,
@@ -42,6 +47,16 @@ export class CustomerDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCustomerData();
+    this.loadProperties();
+
+  }
+  loadProperties() {
+    this.propertyService.getAllProperties().subscribe({
+      next: (data: Property[]) => {
+        this.properties = data;
+      },
+      error: (err: any) => console.error('Error loading properties', err)
+    });
   }
 
   // ✅ BOOK NOW navigates with query parameter
@@ -51,11 +66,44 @@ export class CustomerDashboardComponent implements OnInit {
 
   toggleFavorite(property: Property): void {
     property.isFavorite = !property.isFavorite;
+    const customerId = '123'; // Logic to get current user ID needed
+
+    const favoriteRequest = {
+      customerId: customerId,
+      propertyId: property.id
+    };
+    this.customerService.addFavorite(favoriteRequest).subscribe({
+      next: (res: any) => console.log('Favorite updated', res),
+      error: (err: any) => {
+        console.error('Error updating favorite', err);
+        // Revert on error
+        property.isFavorite = !property.isFavorite;
+      }
+  });
   }
+  loadFavorites() {
+    const customerId = '123';   
+  
+    this.customerService.getFavorites(customerId).subscribe({
+      next: data => {
+        this.properties = data;
+      },
+      error: err => console.log(err)
+    });
+  }
+  
 
   searchProperties(): void {
     console.log('Searching properties...');
+    this.propertyService.searchProperties(this.searchFilters).subscribe({
+      next: (data: Property[]) => {
+        this.properties = data;
+      },
+      error: (err: any) => console.error('Error searching properties', err)
+    });
   }
+
+  
 
   toggleProfileMenu(): void {
     this.showProfileMenu = !this.showProfileMenu;

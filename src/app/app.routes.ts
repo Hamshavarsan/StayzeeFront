@@ -19,13 +19,12 @@ import { Home } from './home/home';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { BookingComponent } from './booking/booking.component';  
 import { AddProperty } from './owner/add-property/add-property';
-
 //import { profile } from 'console';
 
 
 
 export const routes: Routes = [
-    { path: '', component: Login}, 
+    { path: '', component: CustomerDashboardComponent}, 
     { path: 'login', component: Login },
     //{ path: 'home', component: Home },
     { path: 'register', component: Register },  
@@ -48,9 +47,9 @@ export const routes: Routes = [
     //{ path: '**', redirectTo: 'booking/list' },
     { path: 'property/:id', component: HomeDetailComponent }, 
     { path: 'add-property', component: AddProperty},
-
+    { path: 'add-property', component: AddProperty},
     
-  { path: 'booking/:propertyId', component: BookingComponent },
+  { path: 'booking/:propertyId', component: BookingComponent }
 
 
 
