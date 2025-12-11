@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerService } from '../customer.service';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
-import { NavbarComponent } from '../features/customer/shared/navbar/navbar';
 import { PropertyService } from '../services/property.service';
+import { Navbars } from '../navbars/navbars';
 
 export interface Property {
   id: number;
@@ -20,7 +20,7 @@ export interface Property {
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, RouterLink, RouterLinkActive],
+  imports: [CommonModule, Navbars, RouterLink, RouterLinkActive],
   templateUrl: './customer-dashboard.component.html',
   styleUrls: ['./customer-dashboard.component.scss']
 })

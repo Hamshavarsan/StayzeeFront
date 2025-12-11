@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 export interface Property {
   id: string;
@@ -28,6 +30,7 @@ export interface Property {
   styleUrls: ['./property-card.scss']
 })
 export class PropertyCardComponent {
+  constructor(private auth: AuthService, private router: Router) {}
 
   @Input() property!: Property;
 

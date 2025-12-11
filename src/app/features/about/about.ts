@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Navbars } from '../../navbars/navbars';
 
 
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule,Navbars, RouterModule],
   templateUrl: './about.html',
   styleUrls: ['./about.scss']
 })

@@ -16,11 +16,13 @@ import { Routes } from '@angular/router';
 import { Customer } from "./customer/customer";
 import { Owner } from "./owner/owner";
 import { Footer } from './components/footer/footer';
+import { Navbars } from './navbars/navbars';
+
 
   
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, AdminCustomerComponent, AdminOwnerComponent, AdminComponent, SettingsComponent,Customer, Owner,Footer],
+  imports: [RouterOutlet, FormsModule, HttpClientModule, Navigation, Home, Topbar, AdminCustomerComponent, AdminOwnerComponent, AdminComponent, SettingsComponent,Customer, Owner,Footer,Navbars],
 
   standalone:true,
   

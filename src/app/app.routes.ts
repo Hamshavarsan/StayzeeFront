@@ -20,6 +20,7 @@ import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { BookingComponent } from './booking/booking.component';  
 import { AddProperty } from './owner/add-property/add-property';
 //import { profile } from 'console';
+import { Navbars } from './navbars/navbars';
 
 
 
@@ -49,8 +50,9 @@ export const routes: Routes = [
     { path: 'add-property', component: AddProperty},
     { path: 'add-property', component: AddProperty},
     
-  { path: 'booking/:propertyId', component: BookingComponent }
+  { path: 'booking/:propertyId', component: BookingComponent },
 
+  {path:'navbars',component:Navbars}
 
 
 ];
