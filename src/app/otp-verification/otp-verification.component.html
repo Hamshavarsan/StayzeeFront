@@ -1,0 +1,15 @@
+<div class="otp-container">
+    <div class="otp-card">
+        <h2>Verify Email</h2>
+        <p>Please enter the 6-digit code sent to your email.</p>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="otpCode" placeholder="Enter OTP" maxlength="6" />
+            <span *ngIf="errorMessage" class="error">{{ errorMessage }}</span>
+        </div>
+
+        <button (click)="verify()" [disabled]="isLoading">
+            {{ isLoading ? 'Verifying...' : 'Verify' }}
+        </button>
+    </div>
+</div>

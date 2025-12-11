@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './register.html',
   styleUrls: ['./register.scss']
 })
@@ -22,24 +23,38 @@ export class Register {
     role: 'Customer'
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  errorMessage = '';
+  isLoading = false;
 
- onRegister() {
-  this.authService.register(this.registerData).subscribe({
-    next: (res: any) => {
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('userId', res.userId.toString());   // இங்கயும் வரும்!
-      localStorage.setItem('role', res.role);
-      localStorage.setItem('username', res.username);
+  constructor(private authService: AuthService, private router: Router) { }
 
-       
-      if (res.role === 'Customer') {
-        this.router.navigate(['/home']);
-      }
-    },
-    error: (err) => {
-      alert(err.error.message || 'Registration failed');
+  onRegister() {
+    if (!this.registerData.username || !this.registerData.password || !this.registerData.email) {
+      this.errorMessage = "Please fill in all required fields.";
+      return;
     }
-  });
-}
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    this.authService.register(this.registerData).subscribe({
+      next: (res: any) => {
+        // Save token and user details usually happens on login, 
+        // but if register auto-logs in, we save it here.
+        // Registration successful
+        // We do NOT log them in automatically anymore.
+        // Instead, we redirect to OTP verification page.
+
+        // You might want to pass the email or show a success message toast here
+        this.router.navigate(['/otp-verify']);
+      },
+      error: (err: any) => {
+        this.errorMessage = err.error?.message || 'Registration failed. Please try again.';
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
+    });
+  }
 }

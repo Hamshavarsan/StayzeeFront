@@ -9,7 +9,7 @@ export class AuthService {
 
   private apiUrl = "http://localhost:5079/api/Auth";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, data);
@@ -17,6 +17,10 @@ export class AuthService {
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
+  }
+
+  verify(code: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/verify?code=${code}`);
   }
 
   isLoggedIn(): boolean {

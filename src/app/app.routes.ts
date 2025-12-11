@@ -17,8 +17,9 @@ import { AdminOwnerComponent } from './admin/owner/owner.component';
 import { AdminComponent } from './admin/admin.component';
 import { Home } from './home/home';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
-import { BookingComponent } from './booking/booking.component';  
+import { BookingComponent } from './booking/booking.component';
 import { AddProperty } from './owner/add-property/add-property';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 //import { profile } from 'console';
 
 import { Navbars } from './navbars/navbars';
@@ -30,6 +31,7 @@ import { RentalHomeComponent } from './rentalhome.component/rentalhome.component
 
 
 export const routes: Routes = [
+
     //{ path: '', component: CustomerDashboardComponent}, 
     { path: '', component: Login },
     //{ path: 'home', component: Home },
@@ -58,8 +60,12 @@ export const routes: Routes = [
     
   { path: 'booking/:propertyId', component: BookingComponent },
 
+  
+  { path: 'otp-verify', component: OtpVerificationComponent },
+  
+
   {path:'navbars',component:Navbars}
 
 
 ];
-  
+
