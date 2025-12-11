@@ -26,4 +26,11 @@ export class AuthService {
   getRole() {
     return localStorage.getItem("role");
   }
+//   isLoggedIn(): boolean {
+//   return localStorage.getItem('token') != null;
+// }
+
+// getCurrentUserId(): number {
+//   return +localStorage.getItem('userId'); // login பண்ணும்போது save பண்ணிரு
+// }
 }

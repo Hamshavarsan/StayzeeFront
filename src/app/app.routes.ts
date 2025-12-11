@@ -20,16 +20,21 @@ import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { BookingComponent } from './booking/booking.component';  
 import { AddProperty } from './owner/add-property/add-property';
 //import { profile } from 'console';
+
 import { Navbars } from './navbars/navbars';
+
+
+import { HomeComponent } from './home.component/home.component';
+import { RentalHomeComponent } from './rentalhome.component/rentalhome.component';
 
 
 
 export const routes: Routes = [
-    { path: '', component: CustomerDashboardComponent}, 
-    { path: 'login', component: Login },
+    //{ path: '', component: CustomerDashboardComponent}, 
+    { path: '', component: Login },
     //{ path: 'home', component: Home },
     { path: 'register', component: Register },  
-    { path: 'home', component: CustomerDashboardComponent },
+    //{ path: 'home', component: CustomerDashboardComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'customer', component: AdminCustomerComponent },
     { path: 'owners', component: AdminOwnerComponent },
@@ -44,7 +49,8 @@ export const routes: Routes = [
     {path:'about',component:About},
     //{ path: 'create-rental', component: CreateRental },
     
-    
+    { path: 'home', component: HomeComponent },
+    { path: 'rentalhome', component: RentalHomeComponent },
     //{ path: '**', redirectTo: 'booking/list' },
     { path: 'property/:id', component: HomeDetailComponent }, 
     { path: 'add-property', component: AddProperty},

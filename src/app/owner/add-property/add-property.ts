@@ -118,7 +118,7 @@ goBack() {
     next: (res: any) => {
       alert("Congratulations! Your property is live. Welcome Host!");
       localStorage.setItem('role', 'Rentals'); 
-      this.router.navigate(['/rentals-dashboard']);
+      this.router.navigate(['/rentalhome']);
       
       
     },

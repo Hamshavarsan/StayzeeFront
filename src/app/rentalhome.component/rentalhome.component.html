@@ -1,0 +1,84 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">🏠  StayZee.com</div>
+     <nav class="navbar">
+      <div class="logo">
+        <a routerLink="/" class="logo-link">🏠StayZee.com</a>
+      </div>
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a routerLink="/favorite" routerLinkActive="active">❤️Favorites</a>
+        <a href="add-property" routerLinkActive="active">⚙️Add Home</a>
+        <a href="/about" routerLinkActive="active">👥About Us</a>
+
+      </div>
+      <div class="profile-section">
+        <div class="profile-icon" (click)="toggleProfileMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+            <a routerLink="/profile" (click)="closeMenu()">Profile</a>
+        </div>
+      </div> 
+    
+    </nav> 
+  </div>
+</header>
+<div class="container">
+  <h1 class="main-title">Get a smooth stay in Sri Lanka... 🏖️</h1>
+
+  <!-- Search Bar (Future-க்கு ready) -->
+  <div class="search-bar">
+    <input type="text" placeholder="City" class="search-input">
+    <input type="text" placeholder="Min Bedrooms" class="search-input">
+    <input type="text" placeholder="Max Price" class="search-input">
+    <select class="search-input"><option>Property Type</option></select>
+    <select class="search-input"><option>Long or Short Term</option></select>
+    <button class="search-btn">Search</button>
+  </div>
+
+  <div class="filters">
+    
+    <label><input type="checkbox"> Pet Friendly</label>
+    
+  </div>
+
+  <!-- Rental Cards Grid -->
+  <div class="rentals-grid">
+    <div class="rental-card" *ngFor="let r of rentals">
+      <!-- Main Image -->
+      <img [src]="r.photoUrls[0]" 
+           alt="{{ r.homeTitle }}" 
+           class="main-photo"
+           (error)="onImgError($event)">
+
+      <div class="card-content">
+        <h3 class="title">{{ r.homeTitle }}</h3>
+        <p class="location">
+          {{ r.homeLocation }} • {{ r.bedrooms }} Bedrooms 
+          <span class="type">• {{ getPropertyType(r) }}</span>
+        </p>
+        <p class="description">
+          {{ getDescription(r) }}
+        </p>
+
+        <div class="bottom-bar">
+          <div class="price">
+            <strong>{{ r.monthPrice | number }}</strong>/month
+          </div>
+          <button class="favorite-btn">❤️</button>
+          <button class="book-btn" (click)="bookNow(r.id)">
+            BOOK NOW
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-data" *ngIf="rentals.length === 0">
+    <p>தற்போது வீடுகள் எதுவும் கிடைக்கவில்லை 😔</p>
+  </div>
+</div>
+
