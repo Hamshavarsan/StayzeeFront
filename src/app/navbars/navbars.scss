@@ -1,109 +1,167 @@
-// Color palette
-$primary-bg: #F5DCE7;
-$accent: #D97FA3;
-$button: #FF80B4;
-$text: #333333;
-$card-bg: #FFFFFF;
-$border: lighten($primary-bg, 5%);
+// navbars.scss - Full working 100%
 
-// Mixins
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+$primary: #FF80B4;
+$pink-light: #F8A1D1;
+$bg: #F5DCE7;
 
-// Base styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: $primary-bg;
-  color: $text;
-  line-height: 1.6;
+.header {
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .container {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
 }
 
-// Header styles
-.header {
-  background-color: $card-bg;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.logo-link {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: $pink-light;
+  text-decoration: none;
+}
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-
-  .logo .logo-link {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #F8A1D1;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-links a {
-    color: #333;
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  a {
+    color: #444;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 1.05rem;
+    padding: 8px 0;
+    position: relative;
+    &.active, &:hover {
+      color: $primary;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $primary;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+// Right Side
+.auth-section {
+  position: relative;
+}
+
+.guest-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  .login-btn {
+    background: $primary;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    &:hover {
+      background: #ff6ba3;
+      transform: translateY(-2px);
+    }
+  }
+  .register-btn {
+    background: $primary;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    &:hover {
+      background: #ff6ba3;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Profile Section (Logged In)
+.profile-section {
+  position: relative;
+}
+
+.profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50px;
+  transition: 0.3s;
+  &:hover {
+    background: #f8f9fa;
+  }
+}
+
+.username {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 180px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  overflow: hidden;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: #F8A1D1;
+  a {
+    display: block;
+    padding: 14px 20px;
+    color: #444;
+    text-decoration: none;
+    transition: 0.2s;
+    &:hover {
+      background: #f8f9fa;
+      color: $primary;
+    }
+    &.logout {
+      color: #e74c3c;
+      border-top: 1px solid #eee;
+      &:hover {
+        background: #fee;
+      }
+    }
   }
-  }
-  .profile-section {
-    position: relative;
-  }
-  
-  .profile-icon {
-    cursor: pointer;
-    padding: 0.2rem;
-    border-radius: 100%;
-    transition: background-color 0.3s ease;
-  }
-  
-  .profile-icon:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .profile-icon svg {
-    width: 25px;
-    height: 26px;
-    color: #333;
-  }
+}

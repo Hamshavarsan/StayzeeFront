@@ -31,9 +31,18 @@ export class AuthService {
   getRole() {
     return localStorage.getItem("role");
   }
-  getUserId(): number | null {
-  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-  return user?.id || null;
+
+  // getUserId(): number | null {
+  // const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  // return user?.id || null;
+
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+  logout(): void {
+    localStorage.clear(); // அல்லது குறிப்பிட்ட keys மட்டும் remove பண்ணலாம்
+    // optional: backend logout endpoint இருந்தா இங்க call பண்ணலாம்
+
   }
 //   isLoggedIn(): boolean {
 //   return localStorage.getItem('token') != null;
