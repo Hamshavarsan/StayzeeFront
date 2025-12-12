@@ -30,35 +30,57 @@
 <div class="container">
   <h1 class="main-title">Get a smooth stay in Sri Lanka... 🏖️</h1>
 
-  <!-- Search Bar (Future-க்கு ready) -->
+  <!-- Enhanced Search Bar with City Search -->
   <div class="search-bar">
-    <input type="text" placeholder="City" class="search-input">
-    <input type="text" placeholder="Min Bedrooms" class="search-input">
-    <input type="text" placeholder="Max Price" class="search-input">
-    <select class="search-input"><option>Property Type</option></select>
-    <select class="search-input"><option>Long or Short Term</option></select>
-    <button class="search-btn">Search</button>
+    <div class="search-input-wrapper">
+      <input type="text" placeholder="Search by city... 🔍" class="search-input city-search" [(ngModel)]="searchCity"
+        (input)="onSearchInput()" [disabled]="isLoading">
+      <button *ngIf="searchCity" class="clear-btn" (click)="clearSearch()" title="Clear search">
+        ✕
+      </button>
+    </div>
+    <input type="number" placeholder="Min Bedrooms" class="search-input" [(ngModel)]="searchMinBedrooms">
+    <input type="number" placeholder="Max Price" class="search-input" [(ngModel)]="searchMaxPrice">
+    <select class="search-input">
+      <option>Property Type</option>
+    </select>
+    <select class="search-input">
+      <option>Long or Short Term</option>
+    </select>
+    <button class="search-btn" (click)="onSearch()" [disabled]="isLoading">
+      <span *ngIf="!isLoading">Search</span>
+      <span *ngIf="isLoading">Searching...</span>
+    </button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div class="loading-indicator" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading rentals...</p>
+  </div>
+
+  <!-- No Results Message -->
+  <div class="no-results" *ngIf="noResults && !isLoading">
+    <p>😕 No properties found in "{{ searchCity }}"</p>
+    <button class="search-btn" (click)="clearSearch()">View All Properties</button>
   </div>
 
   <div class="filters">
-    
+
     <label><input type="checkbox"> Pet Friendly</label>
-    
+
   </div>
 
   <!-- Rental Cards Grid -->
   <div class="rentals-grid">
     <div class="rental-card" *ngFor="let r of rentals">
       <!-- Main Image -->
-      <img [src]="r.photoUrls[0]" 
-           alt="{{ r.homeTitle }}" 
-           class="main-photo"
-           (error)="onImgError($event)">
+      <img [src]="r.photoUrls[0]" alt="{{ r.homeTitle }}" class="main-photo" (error)="onImgError($event)">
 
       <div class="card-content">
         <h3 class="title">{{ r.homeTitle }}</h3>
         <p class="location">
-          {{ r.homeLocation }} • {{ r.bedrooms }} Bedrooms 
+          {{ r.homeLocation }} • {{ r.bedrooms }} Bedrooms
           <span class="type">• {{ getPropertyType(r) }}</span>
         </p>
         <p class="description">
@@ -71,7 +93,7 @@
             <strong>{{ r.oneDayPrice | number }}</strong>/OneDay
           </div>
           <button class="favorite-btn">❤️</button>
-          
+
           <!-- <button class="favorite-btn">❤️</button> -->
           <button class="book-btn" (click)="bookNow(r.id)">
             BOOK NOW
@@ -83,6 +105,7 @@
 
   <div class="no-data" *ngIf="rentals.length === 0">
     <p>Currently, no houses are available. </p>
+    <h2>Start searching for your perfect stay!</h2>
+    <p>Enter a city name above to find available rental properties</p>
   </div>
 </div>
-

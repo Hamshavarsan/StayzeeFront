@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // Interface inside service file only (no separate model file)
@@ -42,5 +42,13 @@ export class RentalService {
   // Booking API
   bookRental(request: BookingRequest): Observable<any> {
     return this.http.post(`${this.baseUrl}/book`, request);
+  }
+
+  searchRentalsByCity(city: string): Observable<Rental[]> {
+    let params = new HttpParams();
+    if (city && city.trim()) {
+      params = params.set('city', city.trim());
+    }
+    return this.http.get<Rental[]>(`${this.baseUrl}/search`, { params });
   }
 }

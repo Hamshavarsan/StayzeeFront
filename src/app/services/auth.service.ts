@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
 
   private apiUrl = "http://localhost:5079/api/Auth";
 
@@ -26,11 +26,11 @@ export class AuthService {
   forgotPassword(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/forgot-password`, data);
   }
-  
+
   resetPassword(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/reset-password`, data);
   }
-  
+
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem("token");
@@ -40,9 +40,10 @@ export class AuthService {
     return localStorage.getItem("role");
   }
 
-  // getUserId(): number | null {
-  // const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-  // return user?.id || null;
+  getUserId(): number | null {
+    const userId = localStorage.getItem('userId');
+    return userId ? parseInt(userId, 10) : null;
+  }
 
   getUsername(): string | null {
     return localStorage.getItem('username');
