@@ -1,0 +1,81 @@
+<div class="container py-5">
+
+  <!-- Booking Form (Top) -->
+  <div *ngIf="selectedRental" class="card shadow-lg mb-5 border-primary">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Complete Your Booking</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <img [src]="selectedRental.photoUrls[0] || 'https://via.placeholder.com/500'"
+               class="img-fluid rounded shadow" alt="Property">
+          <h5 class="mt-3">{{ selectedRental.homeTitle }}</h5>
+          <p class="text-muted">{{ selectedRental.homeLocation }}</p>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label fw-bold">Check In</label>
+              <input type="date" class="form-control" [(ngModel)]="checkIn" required />
+            </div>
+            <div class="col-6">
+              <label class="form-label fw-bold">Check Out</label>
+              <input type="date" class="form-control" [(ngModel)]="checkOut" required />
+            </div>
+          </div>
+
+          <div class="mt-4 p-4 bg-light rounded" *ngIf="nights > 0">
+            <h5>{{ nights }} Night(s) × ₹{{ selectedRental.oneDayPrice }} = 
+              <span class="text-success fw-bold">₹{{ totalPrice }}</span>
+            </h5>
+          </div>
+
+          <div class="mt-4 d-flex gap-3">
+            <button class="btn btn-success btn-lg px-5" 
+                    (click)="confirmBooking()"
+                    [disabled]="nights <= 0">
+              Confirm & Pay ₹{{ totalPrice }}
+            </button>
+            <button class="btn btn-outline-secondary" (click)="cancelSelection()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Listings -->
+  <h2 class="text-center mb-5" *ngIf="!selectedRental">Choose Your Stay</h2>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"></div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let r of rentals">
+      <div class="card h-100 shadow-sm border-0 hover-lift">
+        <img [src]="r.photoUrls[0] || 'https://via.placeholder.com/400x250'"
+             class="card-img-top" style="height: 200px; object-fit: cover;" alt="home">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ r.homeTitle }}</h5>
+          <p class="text-muted mb-2">
+            <small>{{ r.homeLocation }}</small>
+          </p>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <strong class="text-success fs-4">₹{{ r.oneDayPrice }}</strong>
+              <small class="text-muted">/ night</small>
+            </div>
+            <span class="badge bg-info">{{ r.bedrooms }} BHK</span>
+          </div>
+          <button class="btn btn-primary mt-auto w-100 fw-bold"
+                  (click)="selectForBooking(r)">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
