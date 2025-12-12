@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   private apiUrl = "http://localhost:5079/api/Auth";
 
@@ -29,6 +30,10 @@ export class AuthService {
 
   getRole() {
     return localStorage.getItem("role");
+  }
+  getUserId(): number | null {
+  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  return user?.id || null;
   }
 //   isLoggedIn(): boolean {
 //   return localStorage.getItem('token') != null;

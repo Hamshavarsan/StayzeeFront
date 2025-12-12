@@ -67,9 +67,12 @@
         <div class="bottom-bar">
           <div class="price">
             <strong>{{ r.monthPrice | number }}</strong>/month
+            <strong>{{ r.oneDayPrice | number }}</strong>/OneDay
           </div>
           <button class="favorite-btn">❤️</button>
-          <button class="book-btn" (click)="bookNow(r.id)">
+          <button class="book-btn" 
+                  (click)="bookNow(r.id)"
+                  type="button">
             BOOK NOW
           </button>
         </div>
@@ -78,7 +81,7 @@
   </div>
 
   <div class="no-data" *ngIf="rentals.length === 0">
-    <p>தற்போது வீடுகள் எதுவும் கிடைக்கவில்லை 😔</p>
+    <p>தற்போது வீடுகள் எதுவும் கிடைக்கவில்லை </p>
   </div>
 </div>
 

@@ -37,9 +37,7 @@ throw new Error('Method not implemented.');
 // onImgError($event: ErrorEvent) {
 // throw new Error('Method not implemented.');
 // }
-bookNow(arg0: any) {
-throw new Error('Method not implemented.');
-}
+
 
   rentals: any[] = [];
 
@@ -91,14 +89,9 @@ throw new Error('Method not implemented.');
     event.target.src = 'https://via.placeholder.com/400x300/eee/aaa?text=No+Image';
   }
 
-  // bookNow(rentalId: number) {
-  //   if (!this.authService.isLoggedIn()) {
-  //     this.router.navigate(['/login']);
-  //     return;
-  //   }
-  //   const userId = this.authService.getUserId();
-  //   this.router.navigate(['/booking'], {
-  //     queryParams: { rentalId, userId }
-  //   });
-  // }
+  
+   bookNow(rentalId: number) {
+    console.log('Navigating to /booking/' + rentalId);
+    this.router.navigate(['/booking', rentalId]);
+  }
 }

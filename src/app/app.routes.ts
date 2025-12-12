@@ -27,7 +27,7 @@ import { Navbars } from './navbars/navbars';
 
 import { HomeComponent } from './home.component/home.component';
 import { RentalHomeComponent } from './rentalhome.component/rentalhome.component';
-
+import { BookingPage } from './booking-page/booking-page';
 
 
 export const routes: Routes = [
@@ -58,13 +58,19 @@ export const routes: Routes = [
     { path: 'add-property', component: AddProperty},
     { path: 'add-property', component: AddProperty},
     
-  { path: 'booking/:propertyId', component: BookingComponent },
+
 
   
   { path: 'otp-verify', component: OtpVerificationComponent },
   
 
-  {path:'navbars',component:Navbars}
+
+  // { path: 'booking/:propertyId', component: BookingComponent },
+  { path: 'booking', component: BookingComponent },
+
+  {path:'navbars',component:Navbars},
+  { path: 'booking/:id', component: BookingPage }
+
 
 
 ];

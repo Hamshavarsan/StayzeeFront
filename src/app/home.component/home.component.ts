@@ -22,6 +22,7 @@ import { Rental } from '../models/rental.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
 closeMenu() {
 throw new Error('Method not implemented.');
 }
@@ -37,9 +38,7 @@ throw new Error('Method not implemented.');
 // onImgError($event: ErrorEvent) {
 // throw new Error('Method not implemented.');
 // }
-bookNow(arg0: any) {
-throw new Error('Method not implemented.');
-}
+
 
   rentals: any[] = [];
 
@@ -47,7 +46,8 @@ throw new Error('Method not implemented.');
     private rentalService: RentalService,
     private authService: AuthService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    
   ) {}
 
   ngOnInit() {
@@ -61,7 +61,7 @@ throw new Error('Method not implemented.');
       }
     });
   }
-
+  
   openPhotoGallery(photos: string[]) {
     this.dialog.open(ViewerComponent, {
       data: { photos },
@@ -90,15 +90,23 @@ throw new Error('Method not implemented.');
   onImgError(event: any) {
     event.target.src = 'https://via.placeholder.com/400x300/eee/aaa?text=No+Image';
   }
-
+  // bookNow(rentalId: number) {
+  //   if (!this.authService.isLoggedIn()) {
+  //     this.router.navigate(['/login']);
+  //     return;
+  //   }
   // bookNow(rentalId: number) {
   //   if (!this.authService.isLoggedIn()) {
   //     this.router.navigate(['/login']);
   //     return;
   //   }
   //   const userId = this.authService.getUserId();
-  //   this.router.navigate(['/booking'], {
+  //   this.router.navigate(['/booking, rentalId'], {
   //     queryParams: { rentalId, userId }
   //   });
   // }
+    bookNow(rentalId: number) {
+    console.log('Navigating to /booking/' + rentalId);
+    this.router.navigate(['/booking', rentalId]);
+  }
 }
