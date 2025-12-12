@@ -52,11 +52,4 @@ export class AuthService {
     // optional: backend logout endpoint இருந்தா இங்க call பண்ணலாம்
 
   }
-//   isLoggedIn(): boolean {
-//   return localStorage.getItem('token') != null;
-// }
-
-// getCurrentUserId(): number {
-//   return +localStorage.getItem('userId'); // login பண்ணும்போது save பண்ணிரு
-// }
 }

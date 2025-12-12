@@ -1,0 +1,13 @@
+<div class="success-card">
+    <h2>Payment successful 🎉</h2>
+    <p *ngIf="checking">Checking for invoice... please wait a few seconds</p>
+  
+    <p *ngIf="invoiceReady">
+      Your invoice is ready. <a [href]="invoiceUrl" target="_blank">Open / Download Invoice</a>
+    </p>
+  
+    <p *ngIf="!checking && !invoiceReady">
+      Invoice will be emailed to you. If you don't receive it, contact support.
+    </p>
+  </div>
+  

@@ -21,16 +21,22 @@ import { AddProperty } from './owner/add-property/add-property';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { ResetPassword } from './reset-password/reset-password';
 //import { profile } from 'console';
+
 import { ForgotPassword } from './forgot-password/forgot-password';
-import { Navbars } from './navbars/navbars';
+
 
 import { Owner } from './owner/owner';
 
 import { Profile } from './profile/profile';
 import { Favorites } from './features/customer/favorites/favorites.component';
 
+import { LandingComponent } from './landing-component/landing-component';
+import { Navbars } from './navbars/navbars';
+
+import { PaymentService } from './services/payment.service';
 import { HomeComponent } from './home.component/home.component';
 import { RentalHomeComponent } from './rentalhome.component/rentalhome.component';
+import { Payment } from './payment/payment';
 
   // ← Updated path
 
@@ -44,13 +50,14 @@ import { RentalHomeComponent } from './rentalhome.component/rentalhome.component
 export const routes: Routes = [
 
 
+
     //{ path: '', component: CustomerDashboardComponent}, 
-    { path: '', component: Login },
+    //{ path: '', component: Login },
     //{ path: 'home', component: Home },
     { path: 'register', component: Register },  
     //{ path: 'home', component: CustomerDashboardComponent },
     { path: 'admin', component: AdminComponent },
-    { path: 'customer', component: AdminCustomerComponent },
+    //{ path: 'customer', component: AdminCustomerComponent },
     { path: 'owners', component: AdminOwnerComponent },
     { path: 'profile', component: Profile },
     { path: 'admin/settings', component: SettingsComponent },
@@ -75,7 +82,7 @@ export const routes: Routes = [
   
 
   // Public Routes
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
 
@@ -88,6 +95,44 @@ export const routes: Routes = [
   { path: 'property/:id', component: HomeDetailComponent },
   { path: 'favorites', component: Favorites },
   { path: 'profile', component: Profile },
+
+  //{ path: '', component: CustomerDashboardComponent}, 
+  // { path: '', component: Login },
+  //{ path: 'home', component: Home },
+  { path: 'register', component: Register },
+  { path: 'customers', component: CustomerDashboardComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'customer', component: AdminCustomerComponent },
+  { path: 'owners', component: AdminOwnerComponent },
+  { path: 'profile', component: Profile },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'admin/settings', component: SettingsComponent },
+  { path: 'owners', component: Owner },
+  { path: 'favorite', component: Favorites },
+  { path: 'login', component: Login },
+  { path: 'property', component: PropertyCardComponent },
+  { path: 'searchresult', component: SearchResultsComponent },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'about', component: About },
+  //{ path: 'create-rental', component: CreateRental },
+
+  { path: 'home', component: HomeComponent },
+  { path: 'rentalhome', component: RentalHomeComponent },
+  //{ path: '**', redirectTo: 'booking/list' },
+  { path: 'property/:id', component: HomeDetailComponent },
+  { path: 'add-property', component: AddProperty },
+  { path: 'add-property', component: AddProperty },
+
+  { path: 'booking/:propertyId', component: BookingComponent },
+  { path: 'otp-verify', component: OtpVerificationComponent },
+  { path: 'navbars', component: Navbars },
+  { path: 'payment', component: Payment },
+  {
+    path: '', component: LandingComponent
+  },
+
+
+
 
   // Booking Page (Customer sees all properties & books)
   { path: 'booking', component: BookingComponent },           // ← All listings + inline booking
@@ -109,6 +154,6 @@ export const routes: Routes = [
   },
 
   // Wildcard
-  { path: '**', redirectTo: '/login' }
+  //{ path: '**', redirectTo: '/login' }
 
 ];

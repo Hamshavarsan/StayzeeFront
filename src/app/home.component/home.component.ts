@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +23,7 @@ import { Rental } from '../models/rental.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
 closeMenu() {
@@ -90,6 +93,7 @@ throw new Error('Method not implemented.');
   onImgError(event: any) {
     event.target.src = 'https://via.placeholder.com/400x300/eee/aaa?text=No+Image';
   }
+
   // bookNow(rentalId: number) {
   //   if (!this.authService.isLoggedIn()) {
   //     this.router.navigate(['/login']);
@@ -108,5 +112,10 @@ throw new Error('Method not implemented.');
     bookNow(rentalId: number) {
     console.log('Navigating to /booking/' + rentalId);
     this.router.navigate(['/booking', rentalId]);
+
+
+  
+    
+
   }
 }

@@ -1,6 +1,10 @@
 
-<div class="container">
-  <app-navbars></app-navbars>
+<app-navigation *ngIf="showAdminNav"></app-navigation>
+<app-navbars *ngIf="showUserNav"></app-navbars>
+
+<div [ngClass]="{'admin-content': showAdminNav, 'container': showUserNav, 'auth-content': !showAdminNav && !showUserNav}">
+>>>>>>> Stashed changes
   <router-outlet></router-outlet>
-  
 </div>
+
+<app-footer *ngIf="showFooter"></app-footer>
