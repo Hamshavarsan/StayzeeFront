@@ -23,6 +23,14 @@ export class AuthService {
   verify(code: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/verify?code=${code}`);
   }
+  forgotPassword(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/forgot-password`, data);
+  }
+  
+  resetPassword(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/reset-password`, data);
+  }
+  
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem("token");

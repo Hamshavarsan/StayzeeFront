@@ -20,8 +20,9 @@ import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { BookingComponent } from './booking/booking.component';
 import { AddProperty } from './owner/add-property/add-property';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { ResetPassword } from './reset-password/reset-password';
 //import { profile } from 'console';
-
+import { ForgotPassword } from './forgot-password/forgot-password';
 import { Navbars } from './navbars/navbars';
 
 
@@ -57,8 +58,8 @@ export const routes: Routes = [
     { path: 'property/:id', component: HomeDetailComponent }, 
     { path: 'add-property', component: AddProperty},
     { path: 'add-property', component: AddProperty},
-    
-
+    { path: 'forgot-password', component: ForgotPassword },
+    { path: 'reset-password', component: ResetPassword },
 
   
   { path: 'otp-verify', component: OtpVerificationComponent },
