@@ -1,14 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Rental } from '../models/rental.model';  
+
+// Interface inside service file only (no separate model file)
+export interface Rental {
+  id: number;
+  homeTitle: string;
+  homeLocation: string;
+  bedrooms: number;
+  petFriendly: boolean;
+  oneDayPrice: number;
+  monthPrice: number;
+  photoUrls: string[];
+}
+
+export interface BookingRequest {
+  rentalId: number;
+  userId: number;
+  checkIn: string;
+  checkOut: string;
+  totalPrice: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
-
-  private baseUrl = "http://localhost:5079/api/rentals";
+  private baseUrl = "http://localhost:5079/api/rentals"; // Your backend port
 
   constructor(private http: HttpClient) {}
 
@@ -16,9 +34,13 @@ export class RentalService {
     return this.http.get<Rental[]>(`${this.baseUrl}/all`);
   }
 
-  // இது owner listing page-க்கு (ஏற்கனவே இருக்கு, வைச்சுக்கோ)
+  // For owner (if needed later)
   createRental(formData: FormData): Observable<any> {
     return this.http.post(`${this.baseUrl}/create`, formData);
   }
-  
+
+  // Booking API
+  bookRental(request: BookingRequest): Observable<any> {
+    return this.http.post(`${this.baseUrl}/book`, request);
+  }
 }
