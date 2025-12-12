@@ -5,13 +5,31 @@
       <a routerLink="/" class="logo-link">StayZee.com</a>
     </div>
 
-    <nav class="nav-links">
+     <nav class="nav-links">
       <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a routerLink="/favorite" routerLinkActive="active">❤️Favorites</a>
-      <a routerLink="/about" routerLinkActive="active">👥About Us</a>
-      <a href="/settings" routerLinkActive="active">⚙️Setting</a>
-      <a *ngIf="authService.getRole() === 'Admin'" routerLink="/admin/settings" routerLinkActive="active">
-        Settings
+      
+      <a routerLink="/about" routerLinkActive="active">About Us</a>
+
+      
+      <a *ngIf="authService.getRole() === 'Admin'" 
+        routerLink="/admin/settings" 
+        routerLinkActive="active">
+        ⚙️Settings
+      </a>
+
+      
+      <a *ngIf="authService.getRole() === 'Rental'" 
+        routerLink="/add-property" 
+        routerLinkActive="active"
+        class="add-home-link">
+        Add Home
+      </a>
+
+      
+      <a routerLink="/setting" 
+        routerLinkActive="active"
+        *ngIf="authService.getRole() !== 'Admin'">
+        ⚙️Settings
       </a>
     </nav>
    

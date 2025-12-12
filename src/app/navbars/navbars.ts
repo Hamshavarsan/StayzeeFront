@@ -33,6 +33,9 @@ export class Navbars {
   get username(): string | null {
     return this.authService.getUsername();
   }
+  get role(): string | null {
+    return this.authService.getRole();
+  }
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

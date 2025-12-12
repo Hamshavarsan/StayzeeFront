@@ -45,7 +45,7 @@ export class Login  {  // class name-யும் மாத்திட்டே
         if (res.role === 'Customer') {
           this.router.navigate(['/home']);
         } else if (res.role === 'Admin') {
-          this.router.navigate(['/admin-dashboard']);
+          this.router.navigate(['/admin']);
         } else if (res.role === 'Rentals') {
           this.router.navigate(['/rentalhome']);
         } else {

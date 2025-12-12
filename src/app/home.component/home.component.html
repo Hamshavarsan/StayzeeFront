@@ -92,8 +92,7 @@
             <strong>{{ r.monthPrice | number }}</strong>/month
             <strong>{{ r.oneDayPrice | number }}</strong>/OneDay
           </div>
-          <button class="favorite-btn">❤️</button>
-
+          
           <!-- <button class="favorite-btn">❤️</button> -->
           <button class="book-btn" (click)="bookNow(r.id)">
             BOOK NOW
@@ -105,7 +104,6 @@
 
   <div class="no-data" *ngIf="rentals.length === 0">
     <p>Currently, no houses are available. </p>
-    <h2>Start searching for your perfect stay!</h2>
-    <p>Enter a city name above to find available rental properties</p>
+   
   </div>
 </div>

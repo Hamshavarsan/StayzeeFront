@@ -26,6 +26,7 @@ import { Rental } from '../models/rental.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+currentYear: any;
   closeMenu() {
     throw new Error('Method not implemented.');
   }

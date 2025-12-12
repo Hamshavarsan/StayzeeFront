@@ -18,28 +18,27 @@ import { SettingsComponent } from './admin/settings/settings.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { ForgotPassword } from './forgot-password/forgot-password';
 import { ResetPassword } from './reset-password/reset-password';
-
+import { Settings } from './settings/settings';
+import { RentalHomeComponent } from './rentalhome.component/rentalhome.component';
 export const routes: Routes = [
   // Default / Home Route
   { path: '', component: LandingComponent },                    // Home page
   { path: 'home', component: HomeComponent },                    // Optional extra home
-
+  {path: 'rentalhome', component: RentalHomeComponent },
   // Auth Routes
   { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: 'forgot-password', component: ForgotPassword },
   { path: 'reset-password', component: ResetPassword },
   { path: 'otp-verify', component: OtpVerificationComponent },
-
+    {path:'setting',component:Settings},
   // Customer Routes
   { path: 'customers', component: CustomerDashboardComponent },  // List of properties + Book Now
   { path: 'favorites', component: Favorites },
   { path: 'profile', component: Profile },
   { path: 'about', component: About },
 
-  // Booking Route - VERY IMPORTANT (Single Property Detail + Booking)
-  { path: 'booking/:propertyId', component: BookingComponent },
-  { path: 'booking/:id', component: BookingComponent },         // backup for :id
+   { path: 'booking/:propertyId', component: BookingComponent },
 
   // Owner Routes
   { path: 'add-property', component: AddProperty },

@@ -1,0 +1,83 @@
+.offer-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  border-radius: 24px;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 20px 50px rgba(102, 94, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  .offer-icon {
+    font-size: 4rem;
+    opacity: 0.9;
+  }
+
+  .offer-content {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.8rem 0;
+      line-height: 1.7;
+      font-size: 1.1rem;
+
+      &.offer-note {
+        font-size: 1rem;
+        opacity: 0.9;
+        font-style: italic;
+      }
+    }
+  }
+
+  .offer-btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+  }
+
+  @media (max-width: 868px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+
+    .offer-btn {
+      width: 100%;
+      max-width: 320px;
+      margin: 1rem auto 0;
+    }
+  }
+}
+
+/* Force dark mode-லயும் இதே style */
+:host-context(.dark) .offer-card,
+.offer-card.dark {
+  background: linear-gradient(135deg, #8b46ff 0%, #4a00e0 100%) !important;
+  box-shadow: 0 20px 50px rgba(139, 70, 255, 0.5) !important;
+
+  .offer-btn {
+    color: #8b46ff;
+  }
+}
