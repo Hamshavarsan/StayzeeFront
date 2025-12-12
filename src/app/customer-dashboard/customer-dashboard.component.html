@@ -66,8 +66,8 @@
                 <button class="btn-favorite" (click)="toggleFavorite(property)">
                   <i class="material-icons">{{ property.isFavorite ? 'favorite' : 'favorite_border' }}</i>
                 </button>
-                <button class="btn-book" (click)="bookNow(property)">BOOK NOW</button>
-
+                <button class="btn-book" (click)="bookNow(property.id)">BOOK NOW</button>
+<!--                                        ↑↑↑↑ id மட்டும் pass pannu -->
               </div>
             </div>
           </div>

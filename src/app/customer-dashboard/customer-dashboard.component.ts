@@ -60,10 +60,11 @@ export class CustomerDashboardComponent implements OnInit {
   }
 
   // ✅ BOOK NOW navigates with query parameter
-  bookNow(property: Property): void {
-    this.router.navigate(['/booking/:propertyId'], { queryParams: { propertyId: property.id } });
-  }
+  // Inside your CustomerDashboardComponent class
 
+bookNow(propertyId: number): void {          // ← number expect பண்ணும்
+  this.router.navigate(['/booking', propertyId]);
+}
   toggleFavorite(property: Property): void {
     property.isFavorite = !property.isFavorite;
     const customerId = '123'; // Logic to get current user ID needed
